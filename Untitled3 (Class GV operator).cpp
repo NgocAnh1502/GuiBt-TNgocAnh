@@ -26,7 +26,7 @@ class GiaoVien {
 		cout<<"Nhap ho ten giao vien: ";
 		fflush(stdin);
 		in.getline(GV.HT, 30);
-			while(strlen(GV.HT) < 1){
+			while(strlen(GV.HT) < 1  || strlen(GV.HT) > 29){
 				cout<<"		Nhap lai ho ten giao vien: ";
 				in.getline(GV.HT, 30);
 			}
@@ -41,14 +41,14 @@ class GiaoVien {
 		
 		cout<<"Nhap bang cap cua giao vien: ";
 		in.getline(GV.BC, 15);
-			while(strlen(GV.BC) < 1){
+			while(strlen(GV.BC) < 1 || strlen(GV.BC) > 14){
 				cout<<"		Nhap lai bang cap cua giao vien: ";
 				in.getline(GV.BC, 15);
 			}
 			
 		cout<<"Nhap chuyen nganh cua giao vien: ";
 		in.getline(GV.CN, 20);
-			while(strlen(GV.CN) < 1){
+			while(strlen(GV.CN) < 1 || strlen(GV.CN) > 19){
 				cout<<"		Nhap lai chuyen nganh cua giao vien: ";
 				in.getline(GV.CN, 20);
 			}
