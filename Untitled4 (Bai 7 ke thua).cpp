@@ -92,28 +92,20 @@ class ThiSinh : public Nguoi{
 				<<setw(10)<<TongDiem()<<endl; 
 		} 
 		
-		void TimSBD(){
-			int f;
-				cout<<"Nhap so bao danh can tim: ";
-				cin>>f;
-			while(f < 0){
-				cout<<"		Nhap lai so bao danh can tim: ";
-				cin>>f;
-			}
-			if(f == SBD){
-				cout<<"Thi sinh can tim: "<<endl;
-				Xuat();
-			}
-			else{
-				cout<<"Khong tim thay thi sinh !"<<endl;
-			}
+		int get_sbd(){
+			return SBD;
 		}
 		
-		void DatYeuCau(int x=0){
-			if(T >= 5 && L >= 5 && H >= 5){
-				x+=1;
-			}
-			cout<<"\nSo thi sinh dat yeu cau la: "<<x<<endl;
+		float get_T(){
+			return T;
+		}
+		
+		float get_L(){
+			return L;
+		}
+		
+		float get_H(){
+			return H;
 		}
 }; 
 
@@ -161,15 +153,31 @@ void xuat(ThiSinh TS[], int n){
 }
 
 void Timsbd(ThiSinh TS[], int n){
-	for(int i=0; i<n; i++){
-		TS[i].TimSBD();
+	int f;
+		cout<<"Nhap so bao danh cua thi sinh can tim: ";
+		cin>>f;
+	while(f < 0){
+		cout<<"Nhap lai so bao danh can tim: ";
+		cin>>f;
 	}
+	for(int i=0; i<n; i++){
+		if(TS[i].get_sbd() == f){
+			cout<<"Thi sinh can tim: "<<endl;
+			TS[i].Xuat();
+			return;
+		}
+	}
+	cout<<"Khong co thi sinh can tim!";
 }
 
 void Datyeucau(ThiSinh TS[], int n){
+	int x=0;
 	for(int i=0; i<n; i++){
-		TS[i].DatYeuCau();
+		if(TS[i].get_T() >= 5 && TS[i].get_L() >= 5 && TS[i].get_H() >= 5){
+				x+=1;
+		}
 	}
+	cout<<"\nTy le thi sinh dat yeu cau la: "<<(float) x / n<<"%"<<endl;
 }
 
 void Menu(){
@@ -212,6 +220,7 @@ int main(){
 			break;
 			case 2:
 				xuat(TS, n);
+			break;	
 			case 3:
 				Timsbd(TS, n);
 			break;
